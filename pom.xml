@@ -49,4 +49,22 @@
       <version>4.13.1</version>
     </dependency>
   </dependencies>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+  <scm>
+    <connection>scm:git:https://github.com/alauda/mock-kubernetes-maven-plugin.git</connection>
+    <developerConnection>scm:git:https://github.com/alauda/mock-kubernetes-maven-plugin.git</developerConnection>
+    <url>git:https://github.com/alauda/mock-kubernetes-maven-plugin.git</url>
+  </scm>
+  <developers>
+    <developer>
+      <name>gaodawei</name>
+      <email>dwgao@alauda.io</email>
+      <organization>alauda</organization>
+    </developer>
+  </developers>
 </project>
