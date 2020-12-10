@@ -49,7 +49,7 @@ Plugin will search yaml files recursion in "kubernetes" directory. Specify multi
     <plugin>
       <groupId>io.alauda</groupId>
       <artifactId>mock-kubernetes-maven-plugin</artifactId>
-      <version>1.0-RELEASE</version>
+      <version>1.0.1-RELEASE</version>
       <configuration>
         <resources>
           <resource>kubernetes</resource>
@@ -69,7 +69,7 @@ Mock server will startup at 0.0.0.0:8443, port is alternate in configuration:
     <plugin>
       <groupId>io.alauda</groupId>
       <artifactId>mock-kubernetes-maven-plugin</artifactId>
-      <version>1.0-RELEASE</version>
+      <version>1.0.1-RELEASE</version>
       <configuration>
         <port>8999</port>
       </configuration>
