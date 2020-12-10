@@ -22,6 +22,7 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.codehaus.plexus.util.FileUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -79,11 +80,14 @@ public class MockApiServer
 
         if(resources.size() == 0){
             resources.add(Paths.get(basedir.toString()).resolve("kubernetes").toString());
+            resources.add(Paths.get(basedir.toString()).resolve(".local").toString());
         }
 
         for(String resPath:resources){
             try {
-                loadResources(client,new File(resPath));
+                if(FileUtils.fileExists(resPath)){
+                    loadResources(client,new File(resPath));
+                }
             } catch (FileNotFoundException e) {
                 throw new MojoExecutionException("Failed to load resources!",e);
             }
