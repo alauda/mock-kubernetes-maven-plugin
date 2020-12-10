@@ -13,7 +13,9 @@ It's better to work together with [generator-asf](https://github.com/alauda/gene
 
 1. Put kubernetes resources(yaml files) in directory called "kubernetes" under project root directory.
 
-2. Edit pom.xml of your project to append mock-kubernetes-maven-plugin:
+2. For local resources won't be pushed to git repository, put them in directory called ".local" under project root directory. Then you should append '.local/' in your .gitignore file.
+
+3. Edit pom.xml of your project to append mock-kubernetes-maven-plugin:
 
    ```xml
    <build>
@@ -21,13 +23,13 @@ It's better to work together with [generator-asf](https://github.com/alauda/gene
        <plugin>
          <groupId>io.alauda</groupId>
          <artifactId>mock-kubernetes-maven-plugin</artifactId>
-         <version>1.0-RELEASE</version>
+         <version>1.0.1-RELEASE</version>
        </plugin>
      </plugins>
    </build>
    ```
 
-3. Execute command in shell:
+4. Execute command in shell:
 
    ```shell
    mvn mock-kubernetes:mock
