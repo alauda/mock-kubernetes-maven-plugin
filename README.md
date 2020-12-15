@@ -80,9 +80,14 @@ Mock server will startup at 0.0.0.0:8443, port is alternate in configuration:
 
 #### Mock Kubernetes Discovery With Spring Cloud
 
-For remote micoservice debuging, you should use Endpoint resoure with NodePort address in Kubernetes:
+For remote micoservice debuging, you should use Service And Endpoints resources with NodePort address in Kubernetes:
 
 ```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+---
 apiVersion: v1
 kind: Endpoints
 metadata:
