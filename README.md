@@ -13,7 +13,9 @@ It's better to work together with [generator-asf](https://github.com/alauda/gene
 
 1. Put kubernetes resources(yaml files) in directory called "kubernetes" under project root directory.
 
-2. Edit pom.xml of your project to append mock-kubernetes-maven-plugin:
+2. For local resources won't be pushed to git repository, put them in directory called ".local" under project root directory. Then you should append '.local/' in your .gitignore file.
+
+3. Edit pom.xml of your project to append mock-kubernetes-maven-plugin:
 
    ```xml
    <build>
@@ -21,13 +23,13 @@ It's better to work together with [generator-asf](https://github.com/alauda/gene
        <plugin>
          <groupId>io.alauda</groupId>
          <artifactId>mock-kubernetes-maven-plugin</artifactId>
-         <version>1.0-RELEASE</version>
+         <version>1.0.2-RELEASE</version>
        </plugin>
      </plugins>
    </build>
    ```
 
-3. Execute command in shell:
+4. Execute command in shell:
 
    ```shell
    mvn mock-kubernetes:mock
@@ -47,7 +49,7 @@ Plugin will search yaml files recursion in "kubernetes" directory. Specify multi
     <plugin>
       <groupId>io.alauda</groupId>
       <artifactId>mock-kubernetes-maven-plugin</artifactId>
-      <version>1.0-RELEASE</version>
+      <version>1.0.2-RELEASE</version>
       <configuration>
         <resources>
           <resource>kubernetes</resource>
@@ -67,13 +69,34 @@ Mock-server will startup at 0.0.0.0:8443, port is alternate in configuration:
     <plugin>
       <groupId>io.alauda</groupId>
       <artifactId>mock-kubernetes-maven-plugin</artifactId>
-      <version>1.0-RELEASE</version>
+      <version>1.0.2-RELEASE</version>
       <configuration>
         <port>8999</port>
       </configuration>
     </plugin>
   </plugins>
 </build>
+```
+
+#### Mock Kubernetes Discovery With Spring Cloud
+
+For remote micoservice debuging, you should use Service And Endpoints resources with NodePort address in Kubernetes:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: user-service
+subsets:
+  - addresses:
+      - ip: 10.3.200.33
+    ports:
+      - port: 31101
 ```
 
 Modify bootstrap.yml for mock-server：
@@ -86,4 +109,5 @@ spring:
         master-url: https://127.0.0.1:8443
         trustCerts: true
 ```
+
 
