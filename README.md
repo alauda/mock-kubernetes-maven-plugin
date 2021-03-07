@@ -59,7 +59,7 @@ Plugin will search yaml files recursion in "kubernetes" directory. Specify multi
 </build>
 ```
 
-Mock server will startup at 0.0.0.0:8443, port is alternate in configuration:
+Mock-server will startup at 0.0.0.0:8443, port is alternate in configuration:
 
 ```xml
 <build>
@@ -74,5 +74,16 @@ Mock server will startup at 0.0.0.0:8443, port is alternate in configuration:
     </plugin>
   </plugins>
 </build>
+```
+
+Modify bootstrap.yml for mock-server：
+
+```yaml
+spring:
+  cloud:
+    kubernetes:
+      client:
+        master-url: https://127.0.0.1:8443
+        trustCerts: true
 ```
 
