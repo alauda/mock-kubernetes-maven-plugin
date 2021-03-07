@@ -28,7 +28,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -67,7 +67,7 @@ public class MockApiServer
         KubernetesServer server = new KubernetesServer(
                 true,
                 true,
-                InetAddress.getLoopbackAddress(),
+                new InetSocketAddress(0).getAddress(),
                 port,
                 Collections.emptyList());
         server.before();
